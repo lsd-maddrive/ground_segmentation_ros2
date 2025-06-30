@@ -20,6 +20,16 @@ def generate_launch_description():
                 output='screen',
                 parameters=[params_file])
 
+        Node(
+        package="topic_tools", executable="relay",
+        name="ground_relay",
+        arguments=[
+                "/segmentation/ground", "/segmentation/ground_reliable",
+                "--qos-profile", "rmw_qos_profile_reliable"
+        ],
+        output="screen",
+        )
+
 
         ld = LaunchDescription()
 
